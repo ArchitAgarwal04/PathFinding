@@ -131,6 +131,15 @@ function resetGrids() {
         const grid = document.getElementById(`${algo}Grid`);
         grid.innerHTML = '';
     });
+    algorithms.forEach(algo => {
+        if (algo === 'astar') {
+            document.querySelector(`#${algo}Grid`).parentNode.querySelector('h2').textContent = "A* Algorithm";
+        } else if (algo === 'dijkstra') {
+            document.querySelector(`#${algo}Grid`).parentNode.querySelector('h2').textContent = "Dijkstra's Algorithm";
+        } else {
+            document.querySelector(`#${algo}Grid`).parentNode.querySelector('h2').textContent = "BFS Algorithm";
+        }
+    });    
     initializeGrids();
     resultsDiv.textContent = '';
     isSettingStart = false;
@@ -384,7 +393,7 @@ function testEdgeCases() {
     setStartPoint(0, 0);
     setEndPoint(ROWS - 1, COLS - 1);
     for (let i = 0; i < ROWS; i++) {
-        toggleWall(i, Math.floor(COLS / 2));
+        toggleWall(i, Math.floor(COLS/2));
     }
     console.log('Test 1: No valid path');
     runRace();
